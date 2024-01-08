@@ -1,0 +1,20 @@
+{"id": 246, "sen": "Lewis J. Cralley and Lester V. Cralley, eds., _Industrial Hygiene Aspects of Plant Operations,_ v. 1-3 (New York: Macmillan, 1984)."}
+{"id": 247, "sen": "J. B. Olishifski, ed., _Fundamentals of Industrial Hygiene,_ 2d ed. (Chicago: National Safety Council, 1979)."}
+{"id": 248, "sen": "B. A. Plog, ed., _Fundamentals of Industrial Hygiene,_ 3d ed. (Chicago: National Safety Council, 1988)."}
+{"id": 249, "sen": "N. Irving Sax, _Dangerous Properties of Industrial Materials,_ 6th ed. (New York: Van Nostrand Reinhold, 1984), sec. 2 and 3."}
+{"id": 250, "sen": "Richard A. Wadden and Peter A. Scheff, eds., _Engineering Design for the Control of Workplace Hazards_ (New York: McGraw-Hill, 1987)."}
+{"id": 251, "sen": "A. C. Wentz, _Safety, Health, and Environmental Protection_ (Boston: WCB/McGraw-Hill, 1998)."}
+{"id": 252, "sen": "The data were taken in the work area at the times indicated. Has the worker exceeded the TLV specification?"}
+{"id": 253, "sen": "**3-14.**: Air contains 4 ppm of carbon tetrachloride and 25 ppm of 1,1-dichloroethane. Compute the mixture TLV, and determine whether this value has been exceeded."}
+{"id": 254, "sen": "**3-15.**: A substance has a TLV-TWA of 200 ppm, a TLV-STEL of 250 ppm, and a TLV-C of 300 ppm. The data in the following table were taken in a work area:"}
+{"id": 255, "sen": "A worker on an 8-hour shift is exposed to this toxic vapor. Is the exposure within compliance? If not, what are the violations? Assume that the worker is at lunch between the hours of 12 noon to 1 p.m. and is not exposed to the chemical during that time."}
+{"id": 256, "sen": "**3-16.**: Sax15 provided the following working equation for determining the dilution air requirements resulting from evaporation of a solvent:"}
+{"id": 257, "sen": "Footnote 15: N. I. Sax, _Dangerous Properties of Industrial Materials_, 6th ed. (New York: Van Nostrand Reinhold, 1984), p. 28."}
+{"id": 258, "sen": "\\[\\text{CFM}=\\frac{(3.87\\times 10^{8})(\\text{lb}_{\\text{m}}\\text{of liquid evaporated/min})}{(\\text{molecular weight})(\\text{TLV})(k)},\\]"}
+{"id": 259, "sen": "where CFM is the ft\\({}^{3}\\)/min of dilution air required. Show that this equation is the same as Equation 3-9. What assumptions are inherent in this equation?Problems 3-17 through 3-22 apply to toluene and benzene. The following data are available for these materials:"}
+{"id": 260, "sen": "Saturation vapor pressures:"}
+{"id": 261, "sen": "\\[\\ln(P^{\\rm sat})\\,=\\,A\\,-\\,\\frac{B}{C\\,+\\,T},\\]"}
+{"id": 262, "sen": "where \\(P^{\\rm sat}\\) is the saturation vapor pressure in mm Hg, \\(T\\) is the temperature in K, and \\(A\\), \\(B\\), and \\(C\\) are the constants, given by the following:"}
+{"id": 263, "sen": "**3-17.** Compute the concentration (in ppm) of the saturated vapor with air above a solution of pure toluene. Compute the concentration (in ppm) of the equilibrium vapor with air above a solution of 50 mol % toluene and benzene. The temperature is 80\\({}^{\\circ}\\)F and the total pressure is 1 atm."}
+{"id": 264, "sen": "**3-18.** Compute the density of pure air and the density of air contaminated with 100 ppm benzene. Do the densities of these two gases differ enough to ensure a higher concentration on floors and other low spots? The temperature is 70\\({}^{\\circ}\\)F and the pressure is 1 atm."}
+{"id": 265, "sen": "**3-19.** Equations 3-12 and 3-14 represent the evaporation of a pure liquid. Modify these equations to represent the evaporation of a mixture of ideal miscible liquids."}

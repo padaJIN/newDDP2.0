@@ -1,0 +1,121 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.example</groupId>
+        <artifactId>DataProcess</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>DataProcess-springboot</artifactId>
+    <name>Archetype - DataProcess-springboot</name>
+    <url>http://maven.apache.org</url>
+    <!--占位符-->
+    <properties>
+
+    </properties>
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <!--Google 翻译依赖-->
+    <dependency>
+        <groupId>com.google.cloud</groupId>
+        <artifactId>google-cloud-translate</artifactId>
+        <version>2.4.0</version> <!-- 版本号可能会有变化，可以根据需要选择最新版本 -->
+    </dependency>
+<!-- 百度OCR接口 -->
+    <dependency>
+        <groupId>com.baidu.aip</groupId>
+        <artifactId>java-sdk</artifactId>
+        <version>4.16.16</version>
+    </dependency>
+    <!--jason 格式处理-->
+    <dependency>
+        <groupId>org.json</groupId>
+        <artifactId>json</artifactId>
+        <version>20210307</version>
+    </dependency>
+    <!--pdf处理-->
+    <dependency>
+        <groupId>org.apache.pdfbox</groupId>
+        <artifactId>pdfbox</artifactId>
+        <version>2.0.29</version>
+    </dependency>
+    <!--MySQL数据库-->
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.23</version>
+    </dependency>
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>1.18.30</version>
+        <scope>compile</scope>
+    </dependency>
+
+    <!-- lombok 代码简化 -->
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>1.18.30</version>
+        <scope>provided</scope>
+    </dependency>
+
+    <!-- mybatis-plus 所需依赖  -->
+    <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-boot-starter</artifactId>
+        <version>3.5.1</version>
+    </dependency>
+    <!-- mybatis-plus-generator和 freemarker是用来逆向生成的,通过逆向生成的工具类  -->
+    <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-generator</artifactId>
+        <version>3.5.1</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.freemarker</groupId>
+        <artifactId>freemarker</artifactId>
+        <version>2.3.31</version>
+    </dependency>
+    <!-- 开发热启动 -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-devtools</artifactId>
+        <optional>true</optional>
+    </dependency>
+
+    <!-- MySQL连接 -->
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <scope>runtime</scope>
+    </dependency>
+
+
+
+<!--JUnit 5工具包-->
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter</artifactId>
+        <version>5.8.2</version>
+        <scope>compile</scope>
+    </dependency>
+<!--jwt认证依赖-->
+    <dependency>
+        <groupId>com.auth0</groupId>
+        <artifactId>java-jwt</artifactId>
+        <version>3.4.0</version>
+    </dependency>
+
+    <dependency>
+        <groupId>cn.hutool</groupId>
+        <artifactId>hutool-all</artifactId>
+        <version>5.8.24</version>
+    </dependency>
+</dependencies>
+</project>
