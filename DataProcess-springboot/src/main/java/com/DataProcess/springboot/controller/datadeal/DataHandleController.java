@@ -1,10 +1,9 @@
 package com.DataProcess.springboot.controller.datadeal;
-
+import org.apache.commons.lang3.StringUtils;
 import com.DataProcess.springboot.entity.FileInfo;
 import com.DataProcess.springboot.service.IFileInfoService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
 import javax.annotation.Resource;
 import java.io.BufferedReader;
 import java.io.File;
@@ -32,18 +31,21 @@ public class DataHandleController {
             for (int i = 0; i < processmethodsList.size(); i++) {
                 String flag = "";
                 String fla = (String) processmethodsList.get(i);
+                String num = "";
                 // 指定Python脚本的路径
                 String pythonScriptPath;
-                if (fla.equals("去除长句")) {
-                    pythonScriptPath = "D:\\IdeaProjects\\DataProcess\\DataProcess-springboot\\pythonAPI\\delete_long.py";
-                } else if (fla.equals("去除乱码")) {
+                  if (fla.equals("去除乱码")) {
                     pythonScriptPath = "D:\\IdeaProjects\\DataProcess\\DataProcess-springboot\\pythonAPI\\delete_mess.py";
                 } else if (fla.equals("删除网址")) {
                     pythonScriptPath = "D:\\IdeaProjects\\DataProcess\\DataProcess-springboot\\pythonAPI\\delete_net.py";
-                } else if (fla.equals("去除短句")) {
-                    pythonScriptPath = "D:\\IdeaProjects\\DataProcess\\DataProcess-springboot\\pythonAPI\\delete_short.py";
-                }else if (fla.equals("分句")){
+                } else if (fla.equals("分句")){
                     pythonScriptPath= "D:\\IdeaProjects\\DataProcess\\DataProcess-springboot\\pythonAPI\\split_sentence.py";
+                } else if (fla.contains("长句")) {
+                     num = StringUtils.getDigits(fla);
+                    pythonScriptPath= "D:\\IdeaProjects\\DataProcess\\DataProcess-springboot\\pythonAPI\\delete_long.py";
+                } else if (fla.contains("短句")){
+                    num = StringUtils.getDigits(fla);
+                    pythonScriptPath= "D:\\IdeaProjects\\DataProcess\\DataProcess-springboot\\pythonAPI\\delete_short.py";
                 }
                 else  {
                     pythonScriptPath = "D:\\IdeaProjects\\DataProcess\\DataProcess-springboot\\pythonAPI\\google_trans1.py";
@@ -59,7 +61,7 @@ public class DataHandleController {
                 flag="last";
             }
             // 创建ProcessBuilder来执行Python脚本并传递参数
-            ProcessBuilder processBuilder = new ProcessBuilder("python", pythonScriptPath, arg1 ,flag);
+            ProcessBuilder processBuilder = new ProcessBuilder("python", pythonScriptPath, arg1 ,flag,num);
 
             // 启动Python进程
             Process process = processBuilder.start();
@@ -73,7 +75,7 @@ public class DataHandleController {
 
             // 等待Python进程执行完毕
             int exitCode = process.waitFor();
-            System.out.println("Python脚本执行完毕，退出码：" + exitCode);
+            System.out.println(pythonScriptPath+"Python脚本执行完毕，退出码：" + exitCode);
 
 
             BufferedReader reader2 = new BufferedReader(new InputStreamReader(process.getErrorStream()));
@@ -87,7 +89,7 @@ public class DataHandleController {
                 fileInfo.setRemark("处理后文件");
                 fileInfo.setFileName("processed_"+fileName);
                 fileInfo.setFilePath("D:\\IdeaProjects\\DataProcess\\DataProcess-springboot\\uploadFiles\\processed_"+fileName);
-               fileInfo.setUploadDate(LocalDate.now());
+               fileInfo.setUploadDate(LocalDateTime.now());
                 iFileInfoService.insertFile(fileInfo);}
 
         }

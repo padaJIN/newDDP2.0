@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -50,9 +51,10 @@ public class FileUploadController {
             FileInfo fileInfo = new FileInfo();
             fileInfo.setFileName(fileName);
             fileInfo.setFilePath(filePath);
-            LocalDate upload_time = LocalDate.now();
+            LocalDateTime upload_time = LocalDateTime.now();
             fileInfo.setUploadDate(upload_time);
             fileInfo.setRemark(remark);
+            System.out.println("待上传文件"+fileInfo);
             //将文件信息插入数据库
             fileInfoServiceimpl.insertFile(fileInfo);
             return "文件上传成功。";

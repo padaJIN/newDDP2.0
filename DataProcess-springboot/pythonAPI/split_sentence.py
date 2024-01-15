@@ -6,6 +6,7 @@ import os
 import re
 import json
 import sys
+
 #file_name 要处理的文件的路径  eg: './file1.txt'
 #out_file_name 要保存到的文件路径  eg:  './combin_chinese.json'
 
@@ -31,5 +32,7 @@ def split_sen(file_name,out_file_name):
 
 
 file_name ='D:\IdeaProjects\DataProcess\DataProcess-springboot\\uploadFiles\\'+sys.argv[1]
+
 out_file_name ='D:\IdeaProjects\DataProcess\DataProcess-springboot\\uploadFiles\\'+sys.argv[1]
+
 split_sen(file_name,out_file_name)

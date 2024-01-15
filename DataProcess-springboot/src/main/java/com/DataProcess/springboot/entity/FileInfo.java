@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -26,7 +27,7 @@ public class FileInfo implements Serializable {
 
     private String filePath;
 
-    private LocalDate uploadDate;
+    private LocalDateTime uploadDate;
 
     private String remark;
 
@@ -51,11 +52,11 @@ public class FileInfo implements Serializable {
     public void setFilePath(String filePath) {
         this.filePath = filePath;
     }
-    public LocalDate getUploadDate() {
+    public LocalDateTime getUploadDate() {
         return uploadDate;
     }
 
-    public void setUploadDate(LocalDate uploadDate) {
+    public void setUploadDate(LocalDateTime uploadDate) {
         this.uploadDate = uploadDate;
     }
     public String getRemark() {

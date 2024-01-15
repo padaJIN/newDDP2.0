@@ -36,7 +36,7 @@ with open("D:\IdeaProjects\DataProcess\DataProcess-springboot\\uploadFiles\\"+ s
 
         if sys.argv[2] == "last":
             out_file_name ='D:\IdeaProjects\DataProcess\DataProcess-springboot\\uploadFiles\\processed_'+sys.argv[1]
-        else:out_file_name='D:\IdeaProjects\DataProcess\DataProcess-springboot\\uploadFiles\\'++sys.argv[1]
+        else:out_file_name='D:\IdeaProjects\DataProcess\DataProcess-springboot\\uploadFiles\\'+sys.argv[1]
         with open(out_file_name, "a", encoding="utf-8") as md:
             md.write(json.dumps({i:trans}, ensure_ascii=False) + '\n')
 

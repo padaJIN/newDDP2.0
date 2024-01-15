@@ -2,12 +2,13 @@
 
 import re
 import json
+import sys
+file_name ='D:\IdeaProjects\DataProcess\DataProcess-springboot\\uploadFiles\\'+sys.argv[1]
+out_file_name ='D:\IdeaProjects\DataProcess\DataProcess-springboot\\uploadFiles\\'+sys.argv[1]
+num = int(sys.argv[3])
+i = 1
 
-def delete_mess(file_name, out_file_name, num):
-
-    i = 1
-
-    with open(file_name, 'r', encoding='utf-8') as open_file:
+with open(file_name, 'r', encoding='utf-8') as open_file:
         for line in open_file:
 
             flag = 0
@@ -25,13 +26,10 @@ def delete_mess(file_name, out_file_name, num):
             if flag != 0:
                 continue
             else:
+                if sys.argv[2] == "last":
+                    out_file_name ='D:\IdeaProjects\DataProcess\DataProcess-springboot\\uploadFiles\\processed_'+sys.argv[1]
                 with open(out_file_name, 'a+', encoding='utf-8') as out_file:
                     out_file.write(json.dumps({i: sen}, ensure_ascii=False) + '\n')
                     i += 1
 
-file_name = './temp13.json'
 
-out_file = './temp14.json'
-num = 3
-
-delete_mess(file_name,out_file,num)
