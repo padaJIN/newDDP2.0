@@ -1,7 +1,9 @@
 package com.DataProcess.springboot.controller.datadeal;
+import com.DataProcess.springboot.config.common.response.ResponseResult;
 import org.apache.commons.lang3.StringUtils;
 import com.DataProcess.springboot.entity.FileInfo;
 import com.DataProcess.springboot.service.IFileInfoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
@@ -9,20 +11,19 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.reflect.Array;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
-
+import com.DataProcess.springboot.config.common.pathConfig;
 @RestController
 @RequestMapping("txtHandle")
 public class DataHandleController {
     @Resource
-   private   IFileInfoService iFileInfoService;
+    private IFileInfoService iFileInfoService;
+   @Autowired
+    private pathConfig pathConfig;
     @PostMapping("cnHandle")
-    public String cnHandle(@RequestBody Map<String, ArrayList> requestData ){
+    public ResponseResult cnHandle(@RequestBody Map<String, ArrayList> requestData ){
 
         System.out.println("######"+requestData);
         try {
@@ -35,24 +36,30 @@ public class DataHandleController {
                 // 指定Python脚本的路径
                 String pythonScriptPath;
                   if (fla.equals("去除乱码")) {
-                    pythonScriptPath = "D:\\IdeaProjects\\DataProcess\\DataProcess-springboot\\pythonAPI\\delete_mess.py";
+//                    pythonScriptPath = "D:\\IdeaProjects\\DataProcess\\DataProcess-springboot\\pythonAPI\\delete_mess.py";
+                      pythonScriptPath = pathConfig.getDeleteMessPath();
                 } else if (fla.equals("删除网址")) {
-                    pythonScriptPath = "D:\\IdeaProjects\\DataProcess\\DataProcess-springboot\\pythonAPI\\delete_net.py";
+//                    pythonScriptPath = "D:\\IdeaProjects\\DataProcess\\DataProcess-springboot\\pythonAPI\\delete_net.py";
+                      pythonScriptPath = pathConfig.getDeleteNetPath();
                 } else if (fla.equals("分句")){
-                    pythonScriptPath= "D:\\IdeaProjects\\DataProcess\\DataProcess-springboot\\pythonAPI\\split_sentence.py";
+//                    pythonScriptPath= "D:\\IdeaProjects\\DataProcess\\DataProcess-springboot\\pythonAPI\\split_sentence.py";
+                      pythonScriptPath = pathConfig.getSplitSentencePath();
                 } else if (fla.contains("长句")) {
-                     num = StringUtils.getDigits(fla);
-                    pythonScriptPath= "D:\\IdeaProjects\\DataProcess\\DataProcess-springboot\\pythonAPI\\delete_long.py";
+                      num = StringUtils.getDigits(fla);
+//                      pythonScriptPath= "D:\\IdeaProjects\\DataProcess\\DataProcess-springboot\\pythonAPI\\delete_long.py";
+                      pythonScriptPath = pathConfig.getDeletlongPath();
                 } else if (fla.contains("短句")){
                     num = StringUtils.getDigits(fla);
-                    pythonScriptPath= "D:\\IdeaProjects\\DataProcess\\DataProcess-springboot\\pythonAPI\\delete_short.py";
+//                    pythonScriptPath= "D:\\IdeaProjects\\DataProcess\\DataProcess-springboot\\pythonAPI\\delete_short.py";
+                      pythonScriptPath = pathConfig.getDeleteshortPath();
                 }
                 else  {
-                    pythonScriptPath = "D:\\IdeaProjects\\DataProcess\\DataProcess-springboot\\pythonAPI\\google_trans1.py";
+//                    pythonScriptPath = "D:\\IdeaProjects\\DataProcess\\DataProcess-springboot\\pythonAPI\\google_trans1.py";
+                      pythonScriptPath= pathConfig.getTransAPIPath();
                 }
             // 指定Python脚本的路径
 //          String pythonScriptPath = "D:\\IdeaProjects\\ruoyi-vue-main\\ruoyi-vue-main\\ruoyi-admin\\pythonAPI\\process.py";
-            File file = new File("D:\\IdeaProjects\\DataProcess\\DataProcess-springboot\\uploadFiles\\"+filenameList.get(0));
+            File file = new File(pathConfig.getFileUploadPath()+filenameList.get(0));
 //          uploadFile( (MultipartFile) file);
             String fileName = file.getName();
             // 设置要传递给Python脚本的参数
@@ -61,7 +68,7 @@ public class DataHandleController {
                 flag="last";
             }
             // 创建ProcessBuilder来执行Python脚本并传递参数
-            ProcessBuilder processBuilder = new ProcessBuilder("python", pythonScriptPath, arg1 ,flag,num);
+            ProcessBuilder processBuilder = new ProcessBuilder("python", pythonScriptPath, arg1 ,flag,num,pathConfig.getFileUploadPath(),pathConfig.getProcessedFilePath());
 
             // 启动Python进程
             Process process = processBuilder.start();
@@ -88,7 +95,7 @@ public class DataHandleController {
             {FileInfo fileInfo = new FileInfo();
                 fileInfo.setRemark("处理后文件");
                 fileInfo.setFileName("processed_"+fileName);
-                fileInfo.setFilePath("D:\\IdeaProjects\\DataProcess\\DataProcess-springboot\\uploadFiles\\processed_"+fileName);
+                fileInfo.setFilePath(pathConfig.getProcessedFilePath()+"processed_"+fileName);
                fileInfo.setUploadDate(LocalDateTime.now());
                 iFileInfoService.insertFile(fileInfo);}
 
@@ -96,8 +103,7 @@ public class DataHandleController {
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
-
-        return "处理完成";
+        return ResponseResult.success();
     }
 
 

@@ -7,8 +7,22 @@ server:
 
 #ip: 210.37.97.215
 
+# 设置加密的password信息 类似秘钥？
+jasypt:
+  encryptor:
+    algorithm: PBEWithMD5AndDES
+    password: RaND0m$tr0nG_KeY_2022#Jasypt
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+    ###指定前缀
+    property:
+      prefix: 'pada('
+      suffix: ')'
 
 spring:
+  #导入额外的配置类
+  config:
+    import: classpath:path.yml
+  #服务
   servlet:
     multipart:
       #文件请求大小
@@ -16,11 +30,18 @@ spring:
       max-request-size: 1024MB
   #配置数据源
   datasource:
+    hikari:
+      maximum-pool-size: 10
     #配置连接数据库的信息
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://210.30.97.215:33006/DataProcess?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
-    username: root
-    password: 123456
+   ## url: jdbc:mysql://210.30.97.215:33006/DataProcess?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+   ## url: jdbc:mysql://localhost:3306/DataProcess?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+   ## username: root
+    url: pada(08rKcjieKUrtZ7vqHj9sYtYdkLHMpHZ3BQjCQLZ5m2qtqBJlRR4vqMTcbWo4HPFNB++V9zZrDtP4s6VcxpS1xwIr2F8E4rpiggXqWN1A/Tn3veMiPETSimUP9lLeBovlqWBDRjz2Wo0DifjAr/84I20CDg92LZR8SK8eAzAjkZVZUzIcLvLivcQKTyw1B/NYv6Rl1p/1mFZji5cGRRXziA==)
+    username: pada(jXuFBo0M+dN7wtH50lMOiA==)
+    password: pada(NxZ0BdaL8+cm6+/4R07bRGp62y6VarF45ED+czCjekU=)
+   ## password: 14vs30basketball
+   ## password: 123456
 
 #MyBatis-Plus相关配置
 mybatis-plus:
@@ -28,3 +49,16 @@ mybatis-plus:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #开启sql日志
     map-underscore-to-camel-case: true
 
+###python接口路径配置
+pythonPath:
+  transAPI: D:\ideaIU\project\newDDP2.0\DataProcess-springboot\pythonAPI\google_trans1.py
+  splitSentenceAPI: D:\ideaIU\project\newDDP2.0\DataProcess-springboot\pythonAPI\split_sentence.py
+  deleteMessAPI: D:\ideaIU\project\newDDP2.0\DataProcess-springboot\pythonAPI\delete_mess.py
+  deleteNetAPI: D:\ideaIU\project\newDDP2.0\DataProcess-springboot\pythonAPI\delete_net.py
+  deleteshortAPI: D:\ideaIU\project\newDDP2.0\DataProcess-springboot\pythonAPI\delete_short.py
+  deletelongAPI: D:\ideaIU\project\newDDP2.0\DataProcess-springboot\pythonAPI\delete_long.py
+
+###文件上传路径配置
+filePath:
+  fileupload: D:\ideaIU\project\newDDP2.0\DataProcess-springboot\uploadFiles\
+  processedFile:  D:\ideaIU\project\newDDP2.0\DataProcess-springboot\uploadFiles\processedFile\

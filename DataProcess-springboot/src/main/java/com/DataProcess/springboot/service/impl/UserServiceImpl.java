@@ -43,4 +43,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     public User selectUserByuserNameAndpassword(String username, String password) {
         return userMapper.selectUserByuserNameAndpassword(username, password);
     }
+
+    @Override
+    public User getByUsername(String username) {
+        return userMapper.selectUserByuserName(username);
+    }
 }

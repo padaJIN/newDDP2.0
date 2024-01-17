@@ -23,4 +23,6 @@ public interface IUserService extends IService<User> {
     User selectUserById(String id);
 
     User selectUserByuserNameAndpassword(String username ,String password);
+
+    User getByUsername(String username);
 }

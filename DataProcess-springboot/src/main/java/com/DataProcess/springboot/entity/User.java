@@ -22,6 +22,19 @@ import java.time.LocalDateTime;
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    /**
+     * salt盐 密码加密
+     */
+    private String salt;
     /**
      * token认证
      */

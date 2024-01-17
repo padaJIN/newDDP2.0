@@ -1,5 +1,7 @@
 package com.DataProcess.springboot.controller.datadeal;
 
+import com.DataProcess.springboot.config.common.pathConfig;
+import com.DataProcess.springboot.config.common.response.ResponseResult;
 import com.DataProcess.springboot.entity.FileInfo;
 import com.DataProcess.springboot.mapper.FileInfoMapper;
 import com.DataProcess.springboot.service.impl.FileInfoServiceImpl;
@@ -27,7 +29,8 @@ public class FileUploadController {
 //        String f = file.toString();
 //        return f;
 //    }
-
+    @Autowired
+    private pathConfig pathConfig;
     @PostMapping("/upload")
     public String uploadFile(@RequestParam("file") MultipartFile file, String remark) {
         if (file.isEmpty()) {
@@ -36,7 +39,7 @@ public class FileUploadController {
 
         try {
             // 指定文件保存路径，这里使用了绝对路径
-            String uploadDir = "D:\\IdeaProjects\\DataProcess\\DataProcess-springboot\\uploadFiles";
+            String uploadDir = pathConfig.getFileUploadPath() ;
             String fileName = file.getOriginalFilename();
             String filePath = uploadDir + File.separator + fileName;
 
@@ -64,7 +67,7 @@ public class FileUploadController {
         }
     }
     @GetMapping("/downloads")
-    protected void fileDownload(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected ResponseResult fileDownload(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 获取前端发送的文件名列表
         String[] fileNames = request.getParameterValues("filename");
 
@@ -89,8 +92,13 @@ public class FileUploadController {
                         outputStream.write(buffer, 0, bytesRead);
                     }
                 }
+
+            }
+            else {
+             return    ResponseResult.fail("文件不存在");
             }
         }
+        return ResponseResult.success("文件下载成功");
     }
 
     @GetMapping("/download")
@@ -125,7 +133,7 @@ public class FileUploadController {
     private String getFilePathFromFileName(String fileName) {
         // 根据文件名获取文件路径的实际逻辑
         // 返回对应文件的路径
-        return "D:\\IdeaProjects\\DataProcess\\DataProcess-springboot\\uploadFiles\\" + fileName;
+        return pathConfig.getDeleteshortPath()+ fileName;
     }
 
 
