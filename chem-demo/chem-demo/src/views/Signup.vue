@@ -3,7 +3,7 @@
     <app-navbar />
   </div>
   <div class="login_container" style="position:relative">
-      <div style="width: 300px;  position:absolute; top:150px;left:50%;margin-left:-150px;" >
+      <div style="width: 300px;  position:absolute; top:10vh;left:50%;margin-left:-150px;" >
           <div style="color: black;front-size: 30px; text-align:center; padding:30px">
             欢迎注册
           </div>
@@ -90,7 +90,7 @@ export default {
 
 .login_container{
   background-color: white;
-  height: 100vh;
+  height: 85vh;
   background-size: cover;
 
 }

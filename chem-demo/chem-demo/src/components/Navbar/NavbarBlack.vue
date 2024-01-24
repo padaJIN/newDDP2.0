@@ -104,6 +104,7 @@ export default {
   justify-content: space-between;
   margin-left: 4rem;
   margin-right: 4rem;
+  height: 15vh;
   /*background-color: #55afea;*/
   background: linear-gradient(to bottom, #0557a6, #ffffff)
   /*padding: 2rem 6rem;*/

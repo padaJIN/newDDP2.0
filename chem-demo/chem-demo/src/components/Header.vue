@@ -55,7 +55,7 @@ export default {
   flex-direction: row;
   margin-left: 5rem;
   margin-right: 5rem;
-  /*height: 800px;*/
+  height: 90vh;
 }
 
 .gpt3__header-content {

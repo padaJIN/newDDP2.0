@@ -70,7 +70,7 @@
       </el-form-item>
         </div>
       </div>
-      <el-checkbox v-model="loginForm.rememberMe" style="margin:0px 0px 25px 0px;">remember me </el-checkbox>
+      <el-checkbox v-model="loginForm.rememberMe" style="margin:0px 0px 10px 0px;">remember me </el-checkbox>
       <el-form-item style="width:100%;">
         <el-button
           :loading="loading"
@@ -263,7 +263,7 @@ export default {
 }
 .main_left {
     float: left;
-    width: 60%;
+    width: 55%;
     position: relative;
 }
 
@@ -277,17 +277,17 @@ export default {
 }
 .main_right{
   height: 100%;
-    float: right;
-    width: 40%;
+  float: right;
+  width:45%;
 }
 .loginBox {
             width: 100%;
-            height: 100%;
+            height: 60%;
             //background-color: #0c1622;
-            margin: 30px auto;
+            margin: 5vh auto;
             border-radius: 10px;
             //box-shadow: 0 15px 25px 0 rgba(0, 0, 0, .6);
-            padding: 40px;
+            padding: 3vh;
             box-sizing: border-box;
         }
 .el-input__inner{
@@ -308,8 +308,8 @@ header{
   background-size: cover;
 }
 .main0{
-    width: 1000px;
-    height: 500px;
+    width: 70vw;
+    height: 70vh;
     background: #ffffff91;
     margin: 0 auto;
     margin-top: 10px;
