@@ -12,6 +12,7 @@ import org.apache.pdfbox.rendering.ImageType;
 import org.apache.pdfbox.rendering.PDFRenderer;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -30,18 +31,21 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.file.Path;
 import java.util.*;
-
+import com.DataProcess.springboot.config.common.pathConfig;
 
 
 
 @RestController
 @RequestMapping("/PDFtoTxt")
 public class PdfToTxtCNController {
+    @Autowired
+    private pathConfig pathConfig;
   @PostMapping("PDFtoTxtCn")
   @ResponseBody
     public ResponseEntity<Resource> pdfToTxtCn(MultipartFile file) throws IOException {
         String fileName = file.getOriginalFilename();
-        String  uploadDir= "D:\\IdeaProjects\\DataProcess\\DataProcess-springboot\\PDF\\orgPDF";
+//        String  uploadDir= "D:\\IdeaProjects\\DataProcess\\DataProcess-springboot\\PDF\\orgPDF";
+      String uploadDir = pathConfig.getPdfuploadDirPath();
         String pdfFilePath = uploadDir + File.separator + fileName;
         uploadFile(file,pdfFilePath);
 
@@ -98,7 +102,7 @@ public class PdfToTxtCNController {
 
 
                     JSONArray wordsResult = jsonResponse.getJSONArray("words_result");
-                    BufferedWriter writer = new BufferedWriter(new FileWriter("D:\\IdeaProjects\\DataProcess\\DataProcess-springboot\\PDF\\transPDF\\"+fileName.replace("pdf","txt")));
+                    BufferedWriter writer = new BufferedWriter(new FileWriter(pathConfig.getTransPDFDirPath()+fileName.replace("pdf","txt")));
                     // 提取识别结果
                     StringBuilder pageText = new StringBuilder();
                     for (int i = 0; i < wordsResult.length(); i++) {
@@ -120,7 +124,7 @@ public class PdfToTxtCNController {
 
       //封装返回给后端
         // 从文件系统或其他位置获取文件
-      File file1 = new File("D:\\IdeaProjects\\DataProcess\\DataProcess-springboot\\PDF\\transPDF\\"+fileName.replace("pdf","txt"));
+      File file1 = new File(pathConfig.getTransPDFDirPath()+fileName.replace("pdf","txt"));
       // 将文件内容封装为 InputStreamResource
       InputStreamResource resource = new InputStreamResource(new FileInputStream(file1));
 

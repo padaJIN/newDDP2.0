@@ -132,8 +132,11 @@ public class FileUploadController {
 
     private String getFilePathFromFileName(String fileName) {
         // 根据文件名获取文件路径的实际逻辑
+        if (fileName.contains("process")){
+            return pathConfig.getProcessedFilePath()+fileName;
+        }
         // 返回对应文件的路径
-        return pathConfig.getDeleteshortPath()+ fileName;
+        return pathConfig.getFileUploadPath()+ fileName;
     }
 
 

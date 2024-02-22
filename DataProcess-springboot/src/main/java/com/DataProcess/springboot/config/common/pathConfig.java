@@ -22,34 +22,34 @@ public class pathConfig {
     private String FileUploadPath;
     @Value("${filePath.processedFile}")
     private String processedFilePath;
+    @Value("filePath.pdfuploadDir")
+    private String pdfuploadDirPath;
+    @Value("filePath.transPDFDir")
+    private String transPDFDirPath;
     public String getTransAPIPath() {
         return transAPIPath;
     }
-
     public String getSplitSentencePath() {
         return splitSentencePath;
     }
-
     public String getDeleteMessPath() {
         return deleteMessPath;
     }
-
     public String getDeleteNetPath() {
         return deleteNetPath;
     }
-
     public String getDeleteshortPath() {
         return deleteshortPath;
     }
-
     public String getDeletlongPath() {
         return deletlongPath;
     }
     public String getFileUploadPath(){
         return FileUploadPath;
     }
+    public String getProcessedFilePath() {return processedFilePath;}
 
-    public String getProcessedFilePath() {
-        return processedFilePath;
-    }
+    public String getPdfuploadDirPath() {return pdfuploadDirPath;}
+
+    public String getTransPDFDirPath() {return transPDFDirPath;}
 }

@@ -16,13 +16,14 @@ import java.util.ArrayList;
 import java.util.Map;
 import com.DataProcess.springboot.config.common.pathConfig;
 @RestController
-@RequestMapping("txtHandle")
+//@RequestMapping("txtHandle")
 public class DataHandleController {
     @Resource
     private IFileInfoService iFileInfoService;
    @Autowired
     private pathConfig pathConfig;
-    @PostMapping("cnHandle")
+   private TextHandle textHandle;
+//    @PostMapping("cnHandle")
     public ResponseResult cnHandle(@RequestBody Map<String, ArrayList> requestData ){
 
         System.out.println("######"+requestData);
@@ -56,6 +57,7 @@ public class DataHandleController {
                 else  {
 //                    pythonScriptPath = "D:\\IdeaProjects\\DataProcess\\DataProcess-springboot\\pythonAPI\\google_trans1.py";
                       pythonScriptPath= pathConfig.getTransAPIPath();
+
                 }
             // 指定Python脚本的路径
 //          String pythonScriptPath = "D:\\IdeaProjects\\ruoyi-vue-main\\ruoyi-vue-main\\ruoyi-admin\\pythonAPI\\process.py";
