@@ -107,6 +107,8 @@ export default {
   justify-content: space-between;
   margin-left: 4rem;
   margin-right: 4rem;
+  /* margin-top: 2vh; */
+  height: 10vh;
   /*padding: 2rem 6rem;*/
 }
 

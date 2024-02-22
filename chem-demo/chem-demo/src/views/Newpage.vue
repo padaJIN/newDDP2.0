@@ -45,7 +45,7 @@
         <div style="margin: 20px 0" />
         <div class="two_input">
 
-          <vue-latex :expression=" this.text1 " display-mode />
+          <vue-latex class="katex" :expression=" this.text1 " display-mode />
 <!--          <el-input-->
 <!--              v-model="text2"-->
 <!--              id="hello"-->
@@ -115,6 +115,14 @@ export default {
 </script>
 
 <style>
+
+.katex .base {
+    white-space: pre-wrap;
+    display: contents;
+}
+.katex-display>.katex {
+    text-align: left;
+}
 .two_input{
   height: 400px;
   width: 500px;
@@ -225,10 +233,10 @@ export default {
 
 .upload-container {
   background: transparent; /* 背景为透明 */
-  width: 700px; /* 设置宽度为700px */
-  margin-top: 50px;
+  width: 100vh; /* 设置宽度为700px */
+  margin-top: 5vh;
   margin-bottom: 5vh;
-  margin-left: 570px;
+  margin-left: 55vh;
 }
 
 .style2{
